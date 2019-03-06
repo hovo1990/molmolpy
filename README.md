@@ -10,4 +10,9 @@ sys.path.append(molmol_folder)
 
 To create the conda environment compatible with molmolpy, you can use molmolpy_env.yml file.
 
-https://zenodo.org/badge/DOI/10.5281/zenodo.2585392.svg
+
+Citing:
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2585392.svg)](https://doi.org/10.5281/zenodo.2585392)
+
+
