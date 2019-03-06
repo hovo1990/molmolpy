@@ -110,33 +110,41 @@ def find_sample_folders():
 
 
 def find_files_in_folder(folder, data_format, exclude=None, include=None):
+    orig_include = include
+    orig_exclude = exclude
+
+    if type(orig_include) is list:
+        include = tuple(orig_include)
+    else:
+        include =''
+    if type(orig_exclude) is list:
+        exclude = tuple(orig_exclude)
+    else:
+        exclude=''
+    
+    print('exclude is ',exclude)
+
     try:
         VIP = []
         for dirname, dirnames, filenames in os.walk(folder):
-            # print dirname, '-'
-            # print filenames
+            print('files in folder ', filenames)
             for i in filenames:
                 # print i
                 if data_format in i:
-                    if type(include) is list:
-                        include = tuple(include)
-                    else:
-                        include =''
-                    if type(exclude) is list:
-                        exclude = tuple(exclude)
-                    else:
-                        exclude=''
-
-
+                
                     if i.startswith(include):
+                        # print('i is ', i)
                         if i.endswith(exclude):
+                            print('i test is ', i, 'excl ', exclude)
                             pass
                         else:
+                            # print('i is ', i)
                             VIP.append(i)
         return VIP
     except Exception as e:
         print("error in find_files: ", e)
         sys.exit(0)
+
 
 
 
@@ -169,6 +177,7 @@ def find_files_in_folder_uberDocker(folder, data_format, exclude=None, include=N
     except Exception as e:
         print("error in find_files: ", e)
         sys.exit(0)
+
 
 
 def find_simple_file(folder, data_format):

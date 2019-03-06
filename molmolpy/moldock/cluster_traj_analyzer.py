@@ -135,10 +135,11 @@ class ClusterTrajAnalyzerObject(object):
             self.cluster_colors = self.docking_analysis_object.cluster_colors
 
             try:
+                excl_list = ['centroid.pdb', 'simplified.pdb']
                 self.pdb_files = folder_utils.find_files_in_folder('.' + os.sep + self.folder_path, data_format='pdb',
-                                                                   exclude=['centroid.pdb', 'simplified.pdb'],
+                                                                   exclude=excl_list,
                                                                    include='ligBindTraj')
-                print(self.pdb_files)
+                print('TADA cluster traj extract ', self.pdb_files)
 
                 # self.pickle_files = folder_utils.find_files_in_folder('.' +os.sep + self.folder_path, data_format='pickle')
 
@@ -559,11 +560,11 @@ class ClusterTrajAnalyzerObject(object):
             ligand_save_name = self.centroid_data[centoid_data_index]['ligand_save_name']
             ligand_index = self.centroid_data[centoid_data_index]['ligand_index']
 
-            cluster_color = self.centroid_data[centoid_data_index]['color']
+            # cluster_color = self.centroid_data[centoid_data_index]['color']
 
-            print('RGB values for cluster is ', cluster_color)
+            # print('RGB values for cluster is ', cluster_color)
 
-            actual_name, closest_name = plot_tools.get_cluster_color_name(cluster_color)
+            # actual_name, closest_name = plot_tools.get_cluster_color_name(cluster_color)
 
             coordinates = md_traj_cluster.xyz
 
